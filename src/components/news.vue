@@ -43,26 +43,9 @@
 <script>
 import STATIC from '../assets/js/static.js'
 import QRCode from '../../static/qrcode/qrcode'
-import Vue from 'vue'
-import vHeader from '@/components/common/vHeader'
-import vFooter from '@/components/common/vFooter'
-import vBanner from '@/components/common/vBanner'
-import vDownload from '@/components/common/vDownload'
-import vArticleTitle from '@/components/common/vArticleTitle'
 import Unit from '../assets/js/unit.js'
-import vFocusWechat from '@/components/common/vFocusWechat'
-import vQrcode from '@/components/common/vQrcode'
 import $ from '../../static/jquery/jquery.min.js'
 import { mapMutations, mapState } from 'vuex'
-console.log(STATIC)
-
-Vue.component('vBanner', vBanner)
-Vue.component('vArticleTitle', vArticleTitle)
-Vue.component('vHeader', vHeader)
-Vue.component('vFooter', vFooter)
-Vue.component('vFocusWechat', vFocusWechat)
-Vue.component('vQrcode', vQrcode)
-Vue.component('vDownload', vDownload)
 
 Unit.server53(STATIC._53CodeSrc)
 
@@ -143,6 +126,7 @@ export default {
       if (newVal.query.ID) {
         this.SET_ID({ ID: this.$route.query.ID })
       } else {
+        // ID 设置为0即代表没有选中任何文章，页面将回到文章列表页
         this.SET_ID({ ID: 0 })
       }
     }

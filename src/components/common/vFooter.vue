@@ -1,5 +1,5 @@
 <template>
-  <div class="v-footer" :class="[isMobile ? 'MOBILE-F' : 'PC-F']">
+  <div class="v-footer" :class="[isMobile ? 'MOBILE-F' : 'PC-F', styles === 'AGREEMENT' ? 'agreement-f' : '']">
     <slot></slot>
     <div v-if="type === 1 && !isMobile" class="footer-inner type1">
       <div class="center">
@@ -12,7 +12,7 @@
         </p>
         <p>
           <span>文网文备案 :</span>
-          <span class="open_varchar"><a href="../../../static/image/lisence.png" target="_blank">琼网文（2018）4638-443号</a></span>
+          <span class="open_varchar"><a class="pointer" @click="isShowPreview = true">琼网文（2018）4638-443号</a></span>
           <span>icp备案 :</span>
           <span>琼icp备18001345号</span>
           <span>文网游备字</span>
@@ -21,7 +21,7 @@
         </p>
         <p>
           <span>纠纷处理方式 :</span>
-          <span>联系客服或依<router-link :to="{name: 'AGREEMENT'}">《用户协议》</router-link>约定方式处理</span>
+          <span>联系客服或依<a class="pointer" @click="toAgreement">《用户协议》</a>约定方式处理</span>
         </p>
       </div>
     </div>
@@ -58,7 +58,7 @@
           <div>
             <div>
               <span>文网文备案 :</span>
-              <span class="open_varchar"><a href="../../../static/image/lisence.png" target="_blank">琼网文（2018）4638-443号</a></span>
+              <span class="open_varchar"><a class="pointer" @click="isShowPreview = true">琼网文（2018）4638-443号</a></span>
               <span>icp备案 :</span>
               <span>琼icp备18001345号</span>
             </div>
@@ -71,7 +71,7 @@
           <div>
             <div>
               <span>纠纷处理方式 :</span>
-              <span>联系客服或依<router-link :to="{name: 'AGREEMENT'}">《用户协议》</router-link>约定方式处理</span>
+              <span>联系客服或依<a class="pointer" @click="toAgreement">《用户协议》</a>约定方式处理</span>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
       <div>
         <div>
           <span>文网文备案 :</span>
-          <span><a href="../../../static/image/lisence.png">琼网文（2018）4638-443号</a></span>
+          <span><a class="pointer" @click="isShowPreview = true">琼网文（2018）4638-443号</a></span>
         </div>
         <div>
           <span>ICP备案 :</span>
@@ -109,13 +109,16 @@
         </div>
       </div>
     </div>
+    <v-img-pre-view v-show="isShowPreview" @close="isShowPreview = false"></v-img-pre-view>
   </div>
 </template>
 <script>
 export default {
   name: 'vFooter',
   data() {
-    return {}
+    return {
+      isShowPreview: false
+    }
   },
   props: {
     type: {
@@ -123,6 +126,14 @@ export default {
     },
     isMobile: {
       default: true
+    },
+    styles: {
+      default: ''
+    }
+  },
+  methods: {
+    toAgreement() {
+      window.open(this.$router.resolve({ name: 'AGREEMENT' }).href, '_blank')
     }
   }
 }
@@ -131,6 +142,14 @@ export default {
 <style scoped lang="scss">
 .PC-F {
   background: #101f43;
+
+  &.agreement-f {
+    background: #f5f5f5;
+
+    * {
+      color: #bbb;
+    }
+  }
 
   * {
     font-size: 12px;
@@ -242,6 +261,15 @@ export default {
     .right {
       float: right;
       width: 400px;
+
+      .ivs {
+        display: inline-block;
+        width: 15px;
+        height: 18px;
+        background: url('../../assets/image/ivs.png') no-repeat;
+        background-size: 100% 100%;
+        vertical-align: text-top;
+      }
     }
   }
 

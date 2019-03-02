@@ -6,8 +6,8 @@
       </div>
     </v-header>
     <div class="section section_1">
-      <img v-if="!isMobile" class="bg" src="../assets/image/index/index_bg_01.jpg">
       <img v-if="isMobile" class="bg" src="../assets/image/index/index_m_bg_01.jpg">
+      <img v-else class="bg" src="../assets/image/index/index_bg_01.jpg">
       <div v-if="!isMobile" class="js-Download">
         <v-download></v-download>
       </div>
@@ -17,8 +17,8 @@
       </div>
     </div>
     <div class="section section_2">
-      <img v-if="!isMobile" class="bg" src="../assets/image/index/index_bg_02.jpg">
       <img v-if="isMobile" class="bg" src="../assets/image/index/index_m_bg_02.jpg">
+      <img v-else class="bg" src="../assets/image/index/index_bg_02.jpg">
       <div class="xwzx-title" ref='xwzx'>
         <img src="../assets/image/xwzx.png">
       </div>
@@ -67,63 +67,50 @@
         </div>
       </div>
       <div class="section section_3">
-        <img v-if="!isMobile" class="bg" src="../assets/image/index/index_bg_03.jpg">
         <img v-if="isMobile" class="bg" src="../assets/image/index/index_m_bg_03.jpg">
+        <img v-else class="bg" src="../assets/image/index/index_bg_03.jpg">
         <div class="yxts-title">
           <img src="../assets/image/yxts.png">
         </div>
           <div class="yxts-content" ref="yxts">
             <div class="swiper-container js-Swiper_02">
               <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="../assets/image/index/index_carousel_01.png"></div>
-                  <div class="swiper-slide"><img src="../assets/image/index/index_carousel_02.png"></div>
-                    <div class="swiper-slide"><img src="../assets/image/index/index_carousel_03.png"></div>
-                      <div class="swiper-slide"><img src="../assets/image/index/index_carousel_04.png"></div>
-                      </div>
-                    </div>
-                    <div v-if="!isMobile" class="btn-swiper btn-prev" @click="swiper2.swipeNext()"></div>
-                    <div v-if="!isMobile" class="btn-swiper btn-next" @click="swiper2.swipePrev()"></div>
-                  </div>
+                <div class="swiper-slide" v-for="src in isMobile ? carouselList_M : carouselList" :key="src">
+                  <img :src="src">
                 </div>
-                <div v-if="!isMobile" class="slide-bar-warpper">
-                  <div class="slide-bar">
-                    <span class="bar-item bar_01" @click="tobar1"></span>
-                    <span class="bar-item bar_02" :class="{bar_act_02: isShowWechat, bar_act: isShowWechat}" @click="isShowWechat = true"></span>
-                    <span class="bar-item bar_03" :class="{bar_act_03: isShowDownload, bar_act: isShowDownload}" @click="isShowDownload = true"></span>
-                    <span class="bar-item bar_04" @click="openServer"></span>
-                    <span class="bar-top pointer" @click="toTop"></span>
-                  </div>
                 </div>
-                <div v-if="isShowDownload && !isMobile" class="download-mask-wrapper">
-                  <div class="js-Download_02">
-                    <v-download :isShowCloseBtn="true" @closeDownload="isShowDownload = false"></v-download>
-                  </div>
-                </div>
-                <div v-if="isShowWechat && !isMobile" class="gzwx-mask-wrapper">
-                  <v-focus-wechat @closeWechat="isShowWechat = false"></v-focus-wechat>
-                </div>
-                <v-footer :isMobile="isMobile" :type="isMobile ? 3 : 1">
-                  <v-qrcode v-if="isMobile"></v-qrcode>
-                </v-footer>
               </div>
+              <div class="btn-swiper btn-prev" @click="swiper2.swipeNext()"></div>
+              <div class="btn-swiper btn-next" @click="swiper2.swipePrev()"></div>
+            </div>
+          </div>
+          <div v-if="!isMobile" class="slide-bar-warpper">
+            <div class="slide-bar">
+              <span class="bar-item bar_01" @click="tobar1"></span>
+              <span class="bar-item bar_02" :class="{bar_act_02: isShowWechat, bar_act: isShowWechat}" @click="isShowWechat = true"></span>
+              <span class="bar-item bar_03" :class="{bar_act_03: isShowDownload, bar_act: isShowDownload}" @click="isShowDownload = true"></span>
+              <span class="bar-item bar_04" @click="openServer"></span>
+              <span class="bar-top pointer" @click="toTop"></span>
+            </div>
+          </div>
+          <div v-if="isShowDownload && !isMobile" class="download-mask-wrapper">
+            <div class="js-Download_02">
+              <v-download :isShowCloseBtn="true" @closeDownload="isShowDownload = false"></v-download>
+            </div>
+          </div>
+          <div v-if="isShowWechat && !isMobile" class="gzwx-mask-wrapper">
+            <v-focus-wechat @closeWechat="isShowWechat = false"></v-focus-wechat>
+          </div>
+          <v-footer :isMobile="isMobile" :type="isMobile ? 3 : 1">
+            <v-qrcode v-if="isMobile"></v-qrcode>
+          </v-footer>
+        </div>
 </template>
 <script>
-import Vue from 'vue'
-import vHeader from '@/components/common/vHeader'
-import vFooter from '@/components/common/vFooter'
-import vDownload from '@/components/common/vDownload'
-import vQrcode from '@/components/common/vQrcode'
-import vFocusWechat from '@/components/common/vFocusWechat'
 import Swiper from '../../static/swiper2/idangerous.swiper.min.js'
 import $ from '../../static/jquery/jquery.min.js'
 import STATIC from '../assets/js/static.js'
 import Unit from '../assets/js/unit.js'
-
-Vue.component('vHeader', vHeader)
-Vue.component('vFooter', vFooter)
-Vue.component('vDownload', vDownload)
-Vue.component('vFocusWechat', vFocusWechat)
-Vue.component('vQrcode', vQrcode)
 
 Unit.server53(STATIC._53CodeSrc)
 
@@ -141,7 +128,19 @@ export default {
       isShowWechat: false,
       isShowModal: false,
       showNewsType: 'LASTEST',
-      maxDisplay: 4
+      maxDisplay: 4,
+      carouselList: [
+        `${require('../assets/image/index/index_carousel_01.png')}`,
+        `${require('../assets/image/index/index_carousel_02.png')}`,
+        `${require('../assets/image/index/index_carousel_03.png')}`,
+        `${require('../assets/image/index/index_carousel_04.png')}`
+      ],
+      carouselList_M: [
+        `${require('../assets/image/index/index_m_carousel_01.png')}`,
+        `${require('../assets/image/index/index_m_carousel_02.png')}`,
+        `${require('../assets/image/index/index_m_carousel_03.png')}`,
+        `${require('../assets/image/index/index_m_carousel_04.png')}`
+      ]
     }
   },
   methods: {
@@ -166,10 +165,10 @@ export default {
   },
   mounted() {
     window.addEventListener('resize', () => {
-      $('.wxzx-content .left').width('')
-      $('.wxzx-content .left').width(Math.round($('.wxzx-content .left').width()))
+      $('.xwzx-content .left').width('')
+      $('.xwzx-content .left').width(Math.round($('.xwzx-content .left').width()))
       if (this.isMobile) {
-        $('.wxzx-content .left').height(Math.round($('.wxzx-content .left').width() / 480 * 327))
+        $('.xwzx-content .left').height(Math.round($('.xwzx-content .left').width() / 480 * 327))
       } else {
         this.maxDisplay = Math.floor(($(window).width() > 1280 ? $(window).width() : 1280) / 260)
       }

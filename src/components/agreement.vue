@@ -314,17 +314,11 @@
         </div>
       </div>
     </div>
-    <v-footer :isMobile="isMobile" :type="isMobile ? 3 : 1"></v-footer>
+    <v-footer :isMobile="isMobile" :type="isMobile ? 3 : 1" styles="AGREEMENT"></v-footer>
   </div>
 </template>
 <script>
-import Vue from 'vue'
-import vHeader from '@/components/common/vHeader'
-import vFooter from '@/components/common/vFooter'
 import Unit from '../assets/js/unit.js'
-
-Vue.component('vHeader', vHeader)
-Vue.component('vFooter', vFooter)
 
 export default {
   name: 'Center',
