@@ -1,5 +1,5 @@
 <template>
-  <div class="v-article-title pointer" :class="[isMobile ? 'MOBILE-A' : 'PC-A']">
+  <div class="v-article-title" :class="[isMobile ? 'MOBILE-A' : 'PC-A']">
     <div :class="{'module-core': !isMobile}">
       <div v-if="ID" class="article-wrapper">
         <h3 class="title">{{choiceArticleTitle.text}}</h3>
@@ -57,9 +57,6 @@ export default {
       currentPage: 1,
       pageSize: 6
     }
-  },
-  mounted() {
-
   },
   methods: {
     isShowArticleItem(index) {
@@ -168,7 +165,6 @@ $borderColor: #b2b2b2;
       margin-bottom: 20px;
     }
   }
-
 }
 
 .MOBILE-A {

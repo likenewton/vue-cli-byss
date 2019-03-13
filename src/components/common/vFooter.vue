@@ -14,7 +14,7 @@
           <span>文网文备案 :</span>
           <span class="open_varchar"><a class="pointer" @click="isShowPreview = true">琼网文（2018）4638-443号</a></span>
           <span>icp备案 :</span>
-          <span>琼icp备18001345号</span>
+          <span><a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">琼ICP备18001345号-2</a></span>
           <span>文网游备字</span>
           <span>〔2017〕Ｍ-CSG 2384 号</span>
           <span class="ivs"></span>
@@ -60,7 +60,7 @@
               <span>文网文备案 :</span>
               <span class="open_varchar"><a class="pointer" @click="isShowPreview = true">琼网文（2018）4638-443号</a></span>
               <span>icp备案 :</span>
-              <span>琼icp备18001345号</span>
+              <span><a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">琼ICP备18001345号-2</a></span>
             </div>
             <div>
               <span>文网游备字</span>
@@ -97,7 +97,7 @@
         </div>
         <div>
           <span>ICP备案 :</span>
-          <span>琼IPC备18001345号</span>
+          <span><a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">琼ICP备18001345号-2</a></span>
           <span>文网游备字</span>
           <span>〔2017〕Ｍ-CSG 2384 号<span class="ivs"></span></span>
         </div>
@@ -260,7 +260,7 @@ export default {
 
     .right {
       float: right;
-      width: 400px;
+      width: 410px;
 
       .ivs {
         display: inline-block;

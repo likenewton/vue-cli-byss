@@ -20,9 +20,13 @@ walkthrough.keys().forEach((filename) => {
 
 module.exports = {
   _53CodeSrc: 'https://tb.53kf.com/code/code/10144804/1',
-  // 游戏的下载地址['安卓', '苹果'],
+  // 游戏的下载地址['安卓', '苹果']
+  // 现在会先跳转download公共下载页面，然后根据机型如果是安卓就直接下载，如果是ios就再跳转ios下载页面
   downloadLinks: {
-    'byss': ['http://www.3agame.net/download/?iosid=1443705606&type=wc&gid=54&mid=10072', 'http://www.3agame.net/download/?iosid=1443705606&type=wc&gid=54&mid=10072']
+    'byss': [
+      'http://www.3agame.net/download/?ilink=http%3A%2F%2Fstatic.poker3a.com%2Fbyss%2F09_ditui%2FsingleByss.html&type=wc&gid=54&mid=10072',
+      'http://www.3agame.net/download/?ilink=http%3A%2F%2Fstatic.poker3a.com%2Fbyss%2F09_ditui%2FsingleByss.html&type=wc&gid=54&mid=10072'
+    ]
   },
   articleList: {
     NEWS,
