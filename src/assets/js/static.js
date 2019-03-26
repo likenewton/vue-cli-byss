@@ -24,8 +24,8 @@ module.exports = {
   // 现在会先跳转download公共下载页面，然后根据机型如果是安卓就直接下载，如果是ios就再跳转ios下载页面
   downloadLinks: {
     'byss': [
-      'http://www.3agame.net/download/?ilink=http%3A%2F%2Fstatic.poker3a.com%2Fbyss%2F09_ditui%2FsingleByss.html&type=wc&gid=54&mid=10072',
-      'http://www.3agame.net/download/?ilink=http%3A%2F%2Fstatic.poker3a.com%2Fbyss%2F09_ditui%2FsingleByss.html&type=wc&gid=54&mid=10072'
+      'http://webh5.poker3a.com/dl/?i=http%3A%2F%2Fstatic.poker3a.com%2Fbyss%2F09_ditui%2FsingleByss.html&gid=54&mid=10072',
+      'http://webh5.poker3a.com/dl/?i=http%3A%2F%2Fstatic.poker3a.com%2Fbyss%2F09_ditui%2FsingleByss.html&gid=54&mid=10072'
     ]
   },
   articleList: {
