@@ -4,7 +4,7 @@ const news = require.context('../tpl/NEWS', true, /\d+\.(tpl)$/)
 const activities = require.context('../tpl/ACTIVITIES', true, /\d+\.(tpl)$/)
 const walkthrough = require.context('../tpl/WALKTHROUGH', true, /\d+\.(tpl)$/)
 
-// 将tpl文件打包进js中
+// 将tpl文件打包进js
 news.keys().forEach((filename) => {
   let key = filename.replace('./', '_').replace('.tpl', '')
   NEWS[key] = news(filename)
